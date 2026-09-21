@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>গ্লোবাল টেক ও ট্রেন্ডস ম্যাগাজিন</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --secondary: #0f172a;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* হেডার ডিজাইন */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ব্যানার অ্যাড সেকশন */
+        .top-banner-wrapper {
+            max-width: 1300px;
+            margin: 24px auto 12px auto;
+            padding: 0 24px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .banner-ad-box {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: inline-block;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-ad-box:hover {
+            transform: translateY(-2px);
+        }
+
+        /* মেইন লেআউট */
+        .main-layout {
+            max-width: 1300px;
+            margin: 24px auto 40px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr 320px;
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* কার্ড এবং পোস্ট ডিজাইন */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-title {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+            font-weight: 500;
+        }
+
+        .post-excerpt {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: gap 0.2s ease;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* সি টি এ বাটন বক্স */
+        .cta-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 12px 24px;
+            background: #10b981;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        /* অ্যাড স্লট কার্ড */
+        .ad-card {
+            background: #ffffff;
+            border: 2px dashed #cbd5e1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* উইজেট ডিজাইন */
+        .widget-title {
+            font-size: 1.15rem;
+            color: var(--secondary);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            font-weight: 700;
+        }
+
+        .widget-list {
+            list-style: none;
+        }
+
+        .widget-list li {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .widget-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .widget-list a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: block;
+        }
+
+        .widget-list a:hover {
+            color: var(--primary);
+        }
+
+        /* ফুটার */
+        footer {
+            background: var(--secondary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার অংশ -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Tech<span>Pulse</span></div>
+            <nav>
+                <a href="#">হোম</a>
+                <a href="#">প্রযুক্তি</a>
+                <a href="#">গ্যাজেট</a>
+                <a href="#">যোগাযোগ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ১. সর্বোপরে প্রিমিয়াম ব্যানার অ্যাডসমূহ (অ্যাপে ঢোকার সাথেই দৃশ্যমান) -->
+    <div class="top-banner-wrapper">
+        <!-- বড় ব্যানার (৭২৮x৯০) -->
+        <div class="banner-ad-box">
+            <div class="ad-label">Featured Top Banner Ad (728x90)</div>
+            <script>
+              atOptions = {
+                'key' : 'a6c68520329682dfb0764b46369e56d9',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highrevenueformat.com/a6c68520329682dfb0764b46369e56d9/invoke.js" crossorigin="anonymous"></script>
+        </div>
+
+        <!-- আপনার নতুন মোবাইল ব্যানার (৩২০x৫০) -->
+        <div class="banner-ad-box">
+            <div class="ad-label">Mobile Banner Ad (320x50)</div>
+            <script>
+              atOptions = {
+                'key' : '7788ff91ca9191e4361582d7df384332',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highrevenueformat.com/7788ff91ca9191e4361582d7df384332/invoke.js" crossorigin="anonymous"></script>
+        </div>
+    </div>
+
+    <!-- মূল থ্রি-কলাম লেআউট -->
+    <main class="main-layout">
+        
+        <!-- বাম দিকের সাইডবার (১৬০x৬০০ প্রিমিয়াম অ্যাড) -->
+        <aside>
+            <div class="card ad-card" style="min-height: 620px;">
+                <div class="ad-label">প্রিমিয়াম বিজ্ঞাপন (Left 160x600)</div>
+                <script>
+                  atOptions = {
+                    'key' : 'bbd684808b295b4f567a0311d9e1459d',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/bbd684808b295b4f567a0311d9e1459d/invoke.js" crossorigin="anonymous"></script>
+            </div>
+        </aside>
+
+        <!-- মাঝখানের মূল কন্টেন্ট ও আর্টিকেল ফিড -->
+        <section>
+            <!-- পোস্ট ১ -->
+            <article class="card">
+                <div class="post-meta">
+                    <span>📅 ২১ সেপ্টেম্বর, ২০২৬</span>
+                    <span>📂 টেকনোলজি</span>
+                </div>
+                <h2 class="post-title">আধুনিক কৃত্রিম বুদ্ধিমত্তা এবং ভবিষ্যৎ কর্মসংস্থানের রূপরেখা</h2>
+                <p class="post-excerpt">কৃত্রিম বুদ্ধিমত্তা বা এআই বর্তমানে আমাদের কাজের ধরণ পাল্টে দিচ্ছে। কীভাবে প্রফেশনাল লাইফে এআই টুলগুলোর সঠিক ব্যবহার করে উৎপাদনশীলতা বহুগুণ বাড়িয়ে নেওয়া সম্ভব, তা নিয়ে আজকের বিস্তারিত আলোচনা...</p>
+                <a href="#" class="read-more">সম্পূর্ণ পড়ুন &rarr;</a>
+            </article>
+
+            <!-- প্রথম স্ক্রিপ্ট অ্যাড (Feed Ad 1) -->
+            <div class="card ad-card" style="padding: 15px;">
+                <div class="ad-label">স্পেশাল অ্যাড নেটওয়ার্ক (Feed Ad 1)</div>
+                <script src="https://pl28478329.profitableratecpmnetwork.com/a2/26/73/a2267329b53de01039607ad77a6eb7da.js" crossorigin="anonymous"></script>
+            </div>
+
+            <!-- পোস্ট ২ -->
+            <article class="card">
+                <div class="post-meta">
+                    <span>📅 ২০ সেপ্টেম্বর, ২০২৬</span>
+                    <span>📂 গ্লোবাল ট্রেন্ড</span>
+                </div>
+                <h2 class="post-title">ক্লাউড কম্পিউটিং ও সাইবার নিরাপত্তার নতুন চ্যালেঞ্জসমূহ</h2>
+                <p class="post-excerpt">ডিজিটাল বিশ্বে প্রতিদিন বাড়ছে ডেটা সিকিউরিটি বা সাইবার সুরক্ষার গুরুত্ব। বড় বড় কর্পোরেট প্রতিষ্ঠানগুলো কীভাবে তাদের ডেটা সুরক্ষিত রাখছে এবং ক্লাউড টেকনোলজির আধুনিক আপডেটগুলো সম্পর্কে জেনে নিন...</p>
+                
+                <!-- আপনার সিপিএম নেটওয়ার্ক লিংক বক্স -->
+                <div class="cta-box">
+                    <p style="font-size: 0.95rem; font-weight: 600; color: #1e293b;">বিশেষ অফার ও আপডেট দেখতে নিচে ক্লিক করুন:</p>
+                    <a href="https://www.profitableratecpmnetwork.com/qzdsq9rjv?key=7bdd8880713f83c2c8aa81f26155386f" target="_blank" class="cta-btn">অফিসিয়াল লিংকে যান</a>
+                </div>
+            </article>
+
+            <!-- পোস্ট ৩ -->
+            <article class="card">
+                <div class="post-meta">
+                    <span>📅 ১৯ সেপ্টেম্বর, ২০২৬</span>
+                    <span>📂 ইন্টারনেট আপডেট</span>
+                </div>
+                <h2 class="post-title">২০২৬ সালে ডিজিটাল মার্কেটিং ও ট্রাফিক জেনারেট করার কার্যকরী কৌশল</h2>
+                <p class="post-excerpt">অনলাইন প্ল্যাটফর্মগুলোতে সঠিক উপায়ে ভিজিটর বা ট্রাফিক আনার জন্য আধুনিক এসইও এবং অর্গাণিক গ্রোথ স্ট্র্যাটেজিগুলো অত্যন্ত জরুরি। নতুনদের জন্য কার্যকরী কিছু গাইডলাইন...</p>
+                <a href="#" class="read-more">সম্পূর্ণ পড়ুন &rarr;</a>
+            </article>
+        </section>
+
+        <!-- ডান দিকের সাইডবার (উইজেট এবং ব্যানার অ্যাডসমূহ) -->
+        <aside>
+            <div class="card">
+                <h3 class="widget-title">জনপ্রিয় পোস্ট</h3>
+                <ul class="widget-list">
+                    <li><a href="#">ফাইন্যান্সিয়াল টেকনোলজির ভবিষ্যৎ ট্রেন্ড</a></li>
+                    <li><a href="#">রিমোট ওয়ার্ক কালচার ও এর সুবিধা</a></li>
+                    <li><a href="#">ওয়েব ডেভেলপমেন্টের আধুনিক ফ্রেমওয়ার্ক</a></li>
+                </ul>
+            </div>
+
+            <!-- রাইট সাইডবার ৩০০x২৫০ অ্যাড -->
+            <div class="card ad-card" style="padding: 15px;">
+                <div class="ad-label">বিশেষ বিজ্ঞাপন (Right 300x250)</div>
+                <script>
+                  atOptions = {
+                    'key' : 'c4574b57419809aa98f473c20d761f38',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/c4574b57419809aa98f473c20d761f38/invoke.js" crossorigin="anonymous"></script>
+            </div>
+
+            <!-- রাইট সাইডবার অতিরিক্ত হাই-রেভিনিউ ব্যানার অ্যাড -->
+            <div class="card ad-card" style="padding: 15px;">
+                <div class="ad-label">বিজ্ঞাপন স্লট (Right Banner)</div>
+                <script>
+                  atOptions = {
+                    'key' : 'e1e68fc738a260bcecdb59b1779364a3',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/e1e68fc738a260bcecdb59b1779364a3/invoke.js" crossorigin="anonymous"></script>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- ২য় বার স্ক্রিপ্ট অ্যাড ব্যবহারের স্থান -->
+    <div style="max-width: 1300px; margin: 20px auto; padding: 0 24px; text-align: center;">
+        <div class="card" style="padding: 15px;">
+            <div class="ad-label">স্পেশাল অ্যাড নেটওয়ার্ক (Section Ad 2)</div>
+            <script src="https://pl28478329.profitableratecpmnetwork.com/a2/26/73/a2267329b53de01039607ad77a6eb7da.js" crossorigin="anonymous"></script>
+        </div>
+    </div>
+
+    <!-- কন্টেইনার ভিত্তিক প্রফিটেবল রেট নেটওয়ার্ক অ্যাড -->
+    <div style="max-width: 1300px; margin: 20px auto; padding: 0 24px; text-align: center;">
+        <div class="card" style="padding: 15px;">
+            <div class="ad-label">প্রফিটেবল রেট নেটওয়ার্ক অ্যাড (Footer Container Ad)</div>
+            <div id="container-2ab76d946e3f480cf881d79777f0dca4"></div>
+            <script async="async" data-cfasync="false" src="https://pl29267057.profitableratecpmnetwork.com/2ab76d946e3f480cf881d79777f0dca4/invoke.js" crossorigin="anonymous"></script>
+        </div>
+    </div>
+
+    <!-- ফুটার অংশ -->
+    <footer>
+        <p>&copy; ২০২৬ TechPulse. সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+</body>
+</html>
